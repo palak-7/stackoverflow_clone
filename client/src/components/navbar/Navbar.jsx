@@ -6,9 +6,10 @@ import decode from "jwt-decode";
 import logo from "../../assets/logo.png";
 import search from "../../assets/search-solid.svg";
 import Avatar from "../../components/Avatar/Avatar";
+import bars from "../../assets/bars-solid.svg";
 import "./Navbar.css";
 import { setCurrentUser } from "../../actions/currentUser";
-function Navbar() {
+function Navbar({handleSlideIn}) {
   var user = useSelector((state) => state.currentUserReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,6 +34,9 @@ function Navbar() {
   return (
     <nav className="nav-main">
       <div className="navbar">
+        <button className="slide-in-icon" onClick={()=>handleSlideIn()}>
+        <img src={bars} alt="bars" width="15" />
+        </button>
         <Link to="/" className="nav-item nav-logo">
           <img src={logo} alt="logo" />
         </Link>
