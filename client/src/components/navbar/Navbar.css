@@ -22,6 +22,16 @@
   justify-content: space-between;
 }
 
+.slide-in-icon {
+  display: none;
+  transition: 0.2s;
+  padding: 5px 6px 3px 6px;
+  border-radius: 50%;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
 .nav-logo {
   padding: 5px 25px;
 }

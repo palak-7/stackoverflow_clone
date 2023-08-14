@@ -47,7 +47,7 @@ function Navbar({handleSlideIn}) {
           Products
         </Link>
         <Link to="/" className="nav-item nav-btn">
-          For Team
+          For Teams
         </Link>
         <form>
           <input type="text" placeholder="Search..." />
