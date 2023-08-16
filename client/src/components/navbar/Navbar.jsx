@@ -9,7 +9,7 @@ import Avatar from "../../components/Avatar/Avatar";
 import bars from "../../assets/bars-solid.svg";
 import "./Navbar.css";
 import { setCurrentUser } from "../../actions/currentUser";
-function Navbar({handleSlideIn}) {
+function Navbar({ handleSlideIn }) {
   var user = useSelector((state) => state.currentUserReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,50 +34,54 @@ function Navbar({handleSlideIn}) {
   return (
     <nav className="nav-main">
       <div className="navbar">
-        <button className="slide-in-icon" onClick={()=>handleSlideIn()}>
-        <img src={bars} alt="bars" width="15" />
+        <button className="slide-in-icon" onClick={() => handleSlideIn()}>
+          <img src={bars} alt="bars" width="15" />
         </button>
-        <Link to="/" className="nav-item nav-logo">
-          <img src={logo} alt="logo" />
-        </Link>
-        <Link to="/" className="nav-item nav-btn">
-          About
-        </Link>
-        <Link to="/" className="nav-item nav-btn">
-          Products
-        </Link>
-        <Link to="/" className="nav-item nav-btn">
-          For Teams
-        </Link>
-        <form>
-          <input type="text" placeholder="Search..." />
-          <img src={search} alt="search" width="18" className="search-icon" />
-        </form>
-        {user === null ? (
-          <Link to="/auth" className="nav-item nav-links">
-            Log-In
+        <div className="navbar-1">
+          <Link to="/" className="nav-item nav-logo">
+            <img src={logo} alt="logo" />
           </Link>
-        ) : (
-          <>
-            <Avatar
-              backgroundColor="#009dff"
-              px="10px"
-              py="7px"
-              borderRadius="50%"
-              color="white"
-            >
-              <Link
-                to={`/users/${user?.result?._id}`}
-                style={{ color: "white", textDecoration: "none" }}
+          <Link to="/" className="nav-item nav-btn res-nav">
+            About
+          </Link>
+          <Link to="/" className="nav-item nav-btn res-nav">
+            Products
+          </Link>
+          <Link to="/" className="nav-item nav-btn res-nav">
+            For Teams
+          </Link>
+          <form>
+            <input type="text" placeholder="Search..." />
+            <img src={search} alt="search" width="18" className="search-icon" />
+          </form>
+        </div>
+        <div className="navbar-2">
+          {user === null ? (
+            <Link to="/auth" className="nav-item nav-links">
+              Log-In
+            </Link>
+          ) : (
+            <>
+              <Avatar
+                backgroundColor="#009dff"
+                px="10px"
+                py="7px"
+                borderRadius="50%"
+                color="white"
               >
-                {user.result.name.charAt(0).toUpperCase()}
-              </Link>
-            </Avatar>
-            <button className="nav-item nav-links" onClick={handleLogout}>
-              Log-Out
-            </button>
-          </>
-        )}
+                <Link
+                  to={`/users/${user?.result?._id}`}
+                  style={{ color: "white", textDecoration: "none" }}
+                >
+                  {user.result.name.charAt(0).toUpperCase()}
+                </Link>
+              </Avatar>
+              <button className="nav-item nav-links" onClick={handleLogout}>
+                Log-Out
+              </button>
+            </>
+          )}
+        </div>
       </div>
     </nav>
   );

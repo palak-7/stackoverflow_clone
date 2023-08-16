@@ -4,10 +4,10 @@ import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import TagsList from "./TagsList";
 import { tagsList } from "./tagList.js";
 import "./Tags.css";
-const Tags = () => {
+const Tags = ({ slideIn, handleSlideIn }) => {
   return (
     <div className="home-container-1">
-      <LeftSidebar />
+      <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} />
       <div className="home-container-2">
         <h1 className="tags-h1">Tags</h1>
         <p className="tags-p">

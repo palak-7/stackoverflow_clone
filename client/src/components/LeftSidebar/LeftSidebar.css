@@ -1,10 +1,19 @@
 .left-sidebar {
   width: 164px;
   box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
-  transition: box-shadow ease-in-out 0.1s, transform ease-in-out 0.1s; /*ease-in-out: slow start and end */
-  transform: translateZ(0);
+  background-color: white;
+  height: auto;
+  min-height: 100vh;
+  transition: box-shadow ease-in-out 0.1s, transform ease-in-out 0.1s;
   box-sizing: border-box;
   font-size: 13px;
+}
+
+.nav-btn {
+  background-color: inherit;
+  width: 100%;
+  border: none;
+  padding: 0%;
 }
 
 .side-nav {
@@ -13,11 +22,10 @@
   position: sticky;
   margin: 50px 0px;
   padding: 20px 0px;
-  width: 100%;
 }
 
 .side-nav-div {
-  padding: 10px 0;
+  padding: 10px 0px;
 }
 
 .side-nav-div div {

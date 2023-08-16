@@ -1,8 +1,10 @@
 import React, { useState } from "react"; // without parentheses import default import, with parantheses import is individual import
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import { askQuestion } from "../../actions/question";
 import "./AskQuestion.css";
+
 const AskQuestion = () => {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionBody, setQuestionBody] = useState("");
@@ -13,7 +15,6 @@ const AskQuestion = () => {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    //console.log({ questionTitle, questionBody, questionTags });
     dispatch(
       askQuestion(
         {

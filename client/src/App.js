@@ -10,28 +10,27 @@ import { fetchAllUsers } from "./actions/users";
 function App() {
   const dispatch = useDispatch();
 
+  const [slideIn, setSlideIn] = useState(
+    window.innerWidth > 760 ? true : false
+  );
   useEffect(() => {
+    if (window.innerWidth <= 760) {
+      setSlideIn(false);
+    }
     dispatch(fetchAllQuestions());
     dispatch(fetchAllUsers());
   }, [dispatch]);
 
-  const [slideIn, setSlideIn] = useState(true);
-  useEffect(()=>{
-    if(window.innerWidth <= 760){
-      setSlideIn(false);
-    }
-  })
-
-  const handleSlideIn = ()=>{
-    if(window.innerWidth <= 760){
+  const handleSlideIn = () => {
+    if (window.innerWidth <= 760) {
       setSlideIn((state) => !state);
     }
-  }
+  };
   return (
     <div className="App">
       <Router>
-        <Navbar handleSlideIn={handleSlideIn}/>
-        <AllRoutes />
+        <Navbar handleSlideIn={handleSlideIn} />
+        <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn} />
       </Router>
     </div>
   );

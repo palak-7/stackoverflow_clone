@@ -10,18 +10,42 @@ import Tags from "./pages/Tags/Tags";
 import Users from "./pages/Users/Users";
 import Userprofile from "./pages/UserProfile/Userprofile";
 
-function AllRoutes() {
+function AllRoutes({ slideIn, handleSlideIn }) {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={<Home slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+        />
         <Route path="/auth" element={<Auth />} />
-        <Route path="/questions" element={<Questions />} />
+        <Route
+          path="/questions"
+          element={
+            <Questions slideIn={slideIn} handleSlideIn={handleSlideIn} />
+          }
+        />
         <Route path="/askquestion" element={<AskQuestion />} />
-        <Route path="questions/:id" element={<DisplayQuestion />} />
-        <Route path="/tags" element={<Tags />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/users/:id" element={<Userprofile />} />
+        <Route
+          path="questions/:id"
+          element={
+            <DisplayQuestion slideIn={slideIn} handleSlideIn={handleSlideIn} />
+          }
+        />
+        <Route
+          path="/tags"
+          element={<Tags slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+        />
+        <Route
+          path="/users"
+          element={<Users slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+        />
+        <Route
+          path="/users/:id"
+          element={
+            <Userprofile slideIn={slideIn} handleSlideIn={handleSlideIn} />
+          }
+        />
       </Routes>
     </div>
   );
