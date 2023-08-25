@@ -8,7 +8,6 @@ export const signup = async (req, res) => {
   try {
     const existinguser = await users.findOne({ email });
     if (existinguser) {
-      alert("User already exists.");
       return res.status(404).json({ message: "User already Exist." });
     }
 
@@ -37,7 +36,6 @@ export const login = async (req, res) => {
   try {
     const existinguser = await users.findOne({ email });
     if (!existinguser) {
-      alert("User don't Exist.");
       return res.status(404).json({ message: "User don't Exist." });
     }
     const isPasswordCrt = await bcrypt.compare(password, existinguser.password);
