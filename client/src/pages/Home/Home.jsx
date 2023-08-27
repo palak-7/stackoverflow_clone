@@ -1,10 +1,9 @@
 import React from "react";
-
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import RightSidebar from "../../components/RightSidebar/RightSidebar";
 import HomeMainbar from "../../components/HomeMainbar/HomeMainbar";
 import "../../App.css";
-function Home({ slideIn, handleSlideIn }) {
+function Home({ slideIn, handleSlideIn, darkMode }) {
   return (
     <div className="home-container-1">
       <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} />

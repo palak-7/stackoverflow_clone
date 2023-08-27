@@ -61,6 +61,8 @@ const QuestionDetails = () => {
   const handleDownVote = () => {
     dispatch(voteQuestion(id, "downVote", User.result._id));
   };
+
+  const theme = useSelector((state) => state.themeReducer);
   return (
     <div className="question-details-page">
       {questionList.data === null ? (
@@ -94,7 +96,15 @@ const QuestionDetails = () => {
                     <p className="question-body">{question.questionBody}</p>
                     <div className="question-details-tags">
                       {question.questionTags.map((tag) => (
-                        <p key={tag}>{tag}</p>
+                        <p
+                          key={tag}
+                          style={{
+                            backgroundColor: !theme && "#3c4851",
+                            color: !theme && "#85c0c1",
+                          }}
+                        >
+                          {tag}
+                        </p>
                       ))}
                     </div>
                     <div className="question-action-user">
@@ -150,6 +160,7 @@ const QuestionDetails = () => {
                     cols="30"
                     rows="10"
                     onChange={(e) => setAnswer(e.target.value)}
+                    style={{ backgroundColor: !theme && "#313030" }}
                   ></textarea>
                   <input
                     type="submit"
@@ -160,7 +171,15 @@ const QuestionDetails = () => {
                 <p>
                   Browse other Question tagged
                   {question.questionTags.map((tag) => (
-                    <Link to={"/tags"} key={tag} className="ans-tags">
+                    <Link
+                      to={"/tags"}
+                      key={tag}
+                      className="ans-tags"
+                      style={{
+                        backgroundColor: !theme && "#3c4851",
+                        color: !theme && "#85c0c1",
+                      }}
+                    >
                       {tag}
                     </Link>
                   ))}

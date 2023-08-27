@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux"; //hook: used to dispatch the needed actions
+import { useDispatch, useSelector } from "react-redux"; //hook: used to dispatch the needed actions
 import { useNavigate } from "react-router-dom";
 import icon from "../../assets/icon.png";
 import AboutAuth from "./AboutAuth";
@@ -31,15 +31,25 @@ function Auth() {
       dispatch(login({ email, password }, navigate));
     }
   };
+  const theme = useSelector((state) => state.themeReducer);
   return (
-    <section className="auth-section">
+    <section
+      className="auth-section"
+      style={{
+        backgroundColor: !theme && "#313030",
+        color: !theme && "#e6e8eb",
+      }}
+    >
       {isSignup && <AboutAuth />}
       <div className="auth-container">
         {!isSignup && (
           <img src={icon} alt="stack-overflow" className="login-logo" />
         )}
 
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          style={{ backgroundColor: !theme && "#222121" }}
+        >
           {isSignup && (
             <label htmlFor="name">
               <h4>Display Name</h4>
@@ -82,7 +92,12 @@ function Auth() {
               }}
             />
             {isSignup && (
-              <p style={{ color: "#666737", fontSize: "13px" }}>
+              <p
+                style={{
+                  color: theme ? "#666737" : "#e6e8eb",
+                  fontSize: "13px",
+                }}
+              >
                 Passwords must contain atleast eight <br /> characters including
                 atleast 1 letter and 1 <br /> number.
               </p>
@@ -100,7 +115,9 @@ function Auth() {
           )}
           <button className="auth-btn">{isSignup ? "Signup" : "Login"}</button>
           {isSignup && (
-            <p style={{ color: "#666737", fontSize: "13px" }}>
+            <p
+              style={{ color: theme ? "#666737" : "#e6e8eb", fontSize: "13px" }}
+            >
               By clicking "Sign-up" you agree to our{" "}
               <span style={{ color: "#007ac6" }}>
                 terms of <br />

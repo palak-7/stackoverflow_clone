@@ -12,6 +12,7 @@ const AskQuestion = () => {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.currentUserReducer);
+  const theme = useSelector((state) => state.themeReducer);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,11 +36,17 @@ const AskQuestion = () => {
     }
   }; //to handle if user enters Enter key it will not be displayed disoriented.
   return (
-    <div className="ask-question">
+    <div
+      className="ask-question"
+      style={{ backgroundColor: !theme && "#313030" }}
+    >
       <div className="ask-question-container">
         <h1>Ask a public Question</h1>
         <form onSubmit={handleSubmit}>
-          <div className="ask-form-container">
+          <div
+            className="ask-form-container"
+            style={{ backgroundColor: !theme && "#222121" }}
+          >
             <label htmlFor="ask-ques-title">
               <h4>Title</h4>
               <p>
@@ -51,6 +58,10 @@ const AskQuestion = () => {
                 id="ask-ques-title"
                 onChange={(e) => {
                   setQuestionTitle(e.target.value);
+                }}
+                style={{
+                  backgroundColor: !theme && "#313030",
+                  color: !theme && "#fff",
                 }}
                 placeholder="e.g. Is there an R function for finding the index of an element in a vector?"
               />
@@ -69,6 +80,10 @@ const AskQuestion = () => {
                   setQuestionBody(e.target.value);
                 }}
                 onKeyDown={handleEnter}
+                style={{
+                  backgroundColor: !theme && "#313030",
+                  color: !theme && "#fff",
+                }}
               ></textarea>
             </label>
             <label htmlFor="ask-ques-tags">
@@ -79,6 +94,10 @@ const AskQuestion = () => {
                 id="ask-ques-tags"
                 onChange={(e) => {
                   setQuestionTags(e.target.value.split(" "));
+                }}
+                style={{
+                  backgroundColor: !theme && "#313030",
+                  color: !theme && "#fff",
                 }}
                 placeholder="e.g. 
               (xml typescript wordpress)"

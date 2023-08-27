@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./HomeMainbar.css";
 import QuestionList from "./QuestionList";
 import { useSelector } from "react-redux";
-function HomeMainbar() {
+function HomeMainbar({ darkMode }) {
   const questionList = useSelector((state) => state.questionsReducer);
 
   const location = useLocation(); //gives path from url
@@ -35,7 +35,10 @@ function HomeMainbar() {
         ) : (
           <>
             <p>{questionList.data.length} Questions</p>
-            <QuestionList questionList={questionList.data} />
+            <QuestionList
+              questionList={questionList.data}
+              darkMode={darkMode}
+            />
           </>
         )}
       </div>

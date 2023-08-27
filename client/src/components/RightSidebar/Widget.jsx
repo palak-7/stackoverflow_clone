@@ -1,12 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
 import comment from "../../assets/comment-alt-solid.svg";
 import pen from "../../assets/pen-solid.svg";
 import blackLogo from "../../assets/blacklogo.svg";
 function Widget() {
+  const theme = useSelector((state) => state.themeReducer);
   return (
     <div className="widget">
-      <h4>The Overflow Blog</h4>
-      <div className="right-sidebar-div-1">
+      <h4 style={{ backgroundColor: !theme && "#534c39" }}>
+        The Overflow Blog
+      </h4>
+      <div
+        className="right-sidebar-div-1"
+        style={{ backgroundColor: !theme && "#534c39" }}
+      >
         <div className="right-sidebar-div-2">
           <img src={pen} alt="pen" width="18" />
           <p>
@@ -20,8 +28,11 @@ function Widget() {
         </div>
       </div>
 
-      <h4>Featured on Meta</h4>
-      <div className="right-sidebar-div-1">
+      <h4 style={{ backgroundColor: !theme && "#534c39" }}>Featured on Meta</h4>
+      <div
+        className="right-sidebar-div-1"
+        style={{ backgroundColor: !theme && "#534c39" }}
+      >
         <div className="right-sidebar-div-2">
           <img src={comment} alt="comment" width="18" />
           <p>Review queue workflows - Final release....</p>
@@ -39,8 +50,11 @@ function Widget() {
           </p>
         </div>
       </div>
-      <h4>Hot Meta Posts</h4>
-      <div className="right-sidebar-div-1">
+      <h4 style={{ backgroundColor: !theme && "#534c39" }}>Hot Meta Posts</h4>
+      <div
+        className="right-sidebar-div-1"
+        style={{ backgroundColor: !theme && "#534c39" }}
+      >
         <div className="right-sidebar-div-2">
           <p>38</p>
           <p>

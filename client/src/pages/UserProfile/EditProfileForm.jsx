@@ -29,6 +29,11 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            style={{
+              backgroundColor: "#313030",
+              color: "#fff",
+              borderRadius: "4px",
+            }}
           />
         </label>
         <label htmlFor="about">
@@ -39,6 +44,11 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
             rows="10"
             value={about}
             onChange={(e) => setAbout(e.target.value)}
+            style={{
+              backgroundColor: "#313030",
+              color: "#fff",
+              borderRadius: "4px",
+            }}
           ></textarea>
         </label>
         <label htmlFor="tags">
@@ -48,6 +58,11 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
             type="text"
             id="tags"
             onChange={(e) => setTags(e.target.value.split(" "))}
+            style={{
+              backgroundColor: "#313030",
+              color: "#fff",
+              borderRadius: "4px",
+            }}
           />
         </label>
         <br />

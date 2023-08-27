@@ -64,6 +64,7 @@
   color: #39739d;
   border-radius: 2px;
   font-size: 13px;
+  border-radius: 4px;
 }
 
 @media screen and (max-width: 1020px) {

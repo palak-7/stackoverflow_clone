@@ -35,6 +35,7 @@
 .navbar .navbar-1 {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-grow: 1;
 }
 
@@ -56,7 +57,7 @@
   transition: 0.2s;
 }
 
-.nav-btn {
+.nav-btn-up {
   cursor: pointer;
   border-radius: 20px;
   padding: 10px 20px;
@@ -64,7 +65,7 @@
 
 .nav-item:hover,
 .slide-in-icon:hover {
-  background-color: rgb(226, 226, 226);
+  background-color: rgb(190, 184, 184);
 }
 
 .navbar .navbar-1 form {
@@ -89,15 +90,26 @@
 }
 
 .nav-links {
-  padding: 7px 13px;
-  border: solid 1px blue;
-  border-radius: 3px;
-  background-color: #e7f8fe;
   cursor: pointer;
 }
 
 .nav-links:hover {
   background-color: #d3e4eb;
+}
+.log-btn {
+  padding: 10px 15px;
+  border-radius: 4px;
+  background-color: #009dff;
+  color: white;
+  border: none;
+  text-decoration: none;
+  transition: 0.3s;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.log-btn:hover {
+  background-color: #0086d8;
 }
 
 @media screen and (max-width: 1120px) {
@@ -112,5 +124,8 @@
   }
   .navbar .navbar-1 .res-nav {
     display: none;
+  }
+  .log-btn {
+    margin: 0;
   }
 }

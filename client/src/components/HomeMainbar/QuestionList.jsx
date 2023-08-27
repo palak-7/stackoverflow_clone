@@ -2,11 +2,11 @@
 
 import React from "react";
 import Questions from "./Questions";
-function QuestionList({ questionList }) {
+function QuestionList({ questionList, darkMode }) {
   return (
     <>
       {questionList.map((question) => (
-        <Questions question={question} key={question._id} />
+        <Questions question={question} key={question._id} darkMode={darkMode} />
       ))}
     </>
   );
