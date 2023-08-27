@@ -10,7 +10,7 @@ import Tags from "./pages/Tags/Tags";
 import Users from "./pages/Users/Users";
 import Userprofile from "./pages/UserProfile/Userprofile";
 
-function AllRoutes({ slideIn, handleSlideIn, darkMode }) {
+function AllRoutes({ slideIn, handleSlideIn }) {
   const theme = useSelector((state) => state.themeReducer);
   return (
     <div
@@ -22,67 +22,34 @@ function AllRoutes({ slideIn, handleSlideIn, darkMode }) {
       <Routes>
         <Route
           path="/"
-          element={
-            <Home
-              slideIn={slideIn}
-              handleSlideIn={handleSlideIn}
-              darkMode={darkMode}
-            />
-          }
+          element={<Home slideIn={slideIn} handleSlideIn={handleSlideIn} />}
         />
-        <Route path="/auth" element={<Auth darkMode={darkMode} />} />
+        <Route path="/auth" element={<Auth />} />
         <Route
           path="/questions"
           element={
-            <Questions
-              slideIn={slideIn}
-              handleSlideIn={handleSlideIn}
-              darkMode={darkMode}
-            />
+            <Questions slideIn={slideIn} handleSlideIn={handleSlideIn} />
           }
         />
-        <Route
-          path="/askquestion"
-          element={<AskQuestion darkMode={darkMode} />}
-        />
+        <Route path="/askquestion" element={<AskQuestion />} />
         <Route
           path="questions/:id"
           element={
-            <DisplayQuestion
-              slideIn={slideIn}
-              handleSlideIn={handleSlideIn}
-              darkMode={darkMode}
-            />
+            <DisplayQuestion slideIn={slideIn} handleSlideIn={handleSlideIn} />
           }
         />
         <Route
           path="/tags"
-          element={
-            <Tags
-              slideIn={slideIn}
-              handleSlideIn={handleSlideIn}
-              darkMode={darkMode}
-            />
-          }
+          element={<Tags slideIn={slideIn} handleSlideIn={handleSlideIn} />}
         />
         <Route
           path="/users"
-          element={
-            <Users
-              slideIn={slideIn}
-              handleSlideIn={handleSlideIn}
-              darkMode={darkMode}
-            />
-          }
+          element={<Users slideIn={slideIn} handleSlideIn={handleSlideIn} />}
         />
         <Route
           path="/users/:id"
           element={
-            <Userprofile
-              slideIn={slideIn}
-              handleSlideIn={handleSlideIn}
-              darkMode={darkMode}
-            />
+            <Userprofile slideIn={slideIn} handleSlideIn={handleSlideIn} />
           }
         />
       </Routes>

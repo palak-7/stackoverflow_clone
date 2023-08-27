@@ -1,6 +1,6 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import Navbar from "./components/navbar/Navbar";
 import AllRoutes from "./AllRoutes";
@@ -35,20 +35,11 @@ function App() {
       setSlideIn((state) => !state);
     }
   };
-  const theme = useSelector((state) => state.themeReducer);
-  const darkMode = {
-    backgroundColor: theme ? "#fff" : "#313030",
-    color: theme ? "black" : "#e6e8eb",
-  };
   return (
     <div className="App">
       <Router>
         <Navbar handleSlideIn={handleSlideIn} />
-        <AllRoutes
-          slideIn={slideIn}
-          handleSlideIn={handleSlideIn}
-          darkMode={darkMode}
-        />
+        <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn} />
       </Router>
     </div>
   );
