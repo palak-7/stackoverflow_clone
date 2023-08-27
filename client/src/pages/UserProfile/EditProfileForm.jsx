@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./UserProfile.css";
 import { updateProfile } from "../../actions/users";
 
@@ -18,6 +18,8 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
     }
     setSwitch(false);
   };
+
+  const theme = useSelector((state) => state.themeReducer);
   return (
     <div>
       <h1 className="edit-profile-title">Edit Your Profile</h1>
@@ -30,8 +32,8 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             style={{
-              backgroundColor: "#313030",
-              color: "#fff",
+              backgroundColor: !theme && "#313030",
+              color: !theme && "#fff",
               borderRadius: "4px",
             }}
           />
@@ -45,8 +47,8 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
             value={about}
             onChange={(e) => setAbout(e.target.value)}
             style={{
-              backgroundColor: "#313030",
-              color: "#fff",
+              backgroundColor: !theme && "#313030",
+              color: !theme && "#fff",
               borderRadius: "4px",
             }}
           ></textarea>
@@ -59,8 +61,8 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
             id="tags"
             onChange={(e) => setTags(e.target.value.split(" "))}
             style={{
-              backgroundColor: "#313030",
-              color: "#fff",
+              backgroundColor: !theme && "#313030",
+              color: !theme && "#fff",
               borderRadius: "4px",
             }}
           />
