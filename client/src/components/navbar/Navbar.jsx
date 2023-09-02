@@ -73,6 +73,15 @@ function Navbar({ handleSlideIn }) {
           >
             For Teams
           </Link>
+          <Link
+            to="/customvideo"
+            className="nav-item nav-btn-up res-nav"
+            style={{
+              color: theme ? "#2d2c2c" : "#e7e9e5",
+            }}
+          >
+            Video
+          </Link>
           <form>
             <input type="text" placeholder="Search..." />
             <img src={search} alt="search" width="18" className="search-icon" />
