@@ -52,7 +52,9 @@ export const getImage = async (req, res) => {
 
 export const postImage = async (req, res) => {
   const { id: _id } = req.params;
+  console.log("id: " + _id);
   const { profileImage } = req.body;
+  console.log("profileImage: " + profileImage);
   if (!mongoose.Types.ObjectId.isValid(_id)) {
     return res.status(404).send("User unavailable...");
   }
