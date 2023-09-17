@@ -13,7 +13,7 @@ app.use(express.urlencoded({ limit: "30mb", extended: true })); //.urlencoded():
 app.use(cors()); //cross origin resource sharing
 
 app.get("/", (req, res) => {
-  res.send("This is a stack overflow app");
+  res.send("This is a stack overflow app!!");
 });
 
 app.use("/user", userRoutes);
