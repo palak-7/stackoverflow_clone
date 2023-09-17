@@ -60,7 +60,7 @@ export const postImage = async (req, res) => {
     await User.findByIdAndUpdate(_id, {
       $set: { profileImage: profileImage },
     });
-    res.status(201).json({ msg: "New image uploaded.." });
+    res.status(200).json(profileImage);
   } catch (error) {
     console.log(error);
   }
