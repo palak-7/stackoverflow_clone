@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
   about: { type: String },
   tags: { type: [String] },
   joinedOn: { type: Date, default: Date.now },
+  profileImage: { type: String },
 });
 
 export default mongoose.model("User", userSchema);

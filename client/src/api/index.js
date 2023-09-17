@@ -4,6 +4,7 @@ import axios from "axios";
 
 const API = axios.create({
   baseURL: "https://stackoverflow-clone-tiwu.onrender.com",
+  // baseURL: "http://localhost:5000",
 });
 
 API.interceptors.request.use((req) => {
@@ -38,3 +39,6 @@ export const deleteAnswer = (id, answerId, noOfAnswers) =>
 export const fetchAllUsers = () => API.get("/user/getAllUsers");
 export const updateProfile = (id, updateData) =>
   API.patch(`/user/update/${id}`, updateData);
+
+export const postImage = (id, profileImage) =>
+  API.patch(`/postImage/${id}`, { profileImage });

@@ -17,3 +17,13 @@ export const updateProfile = (id, updateData) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const postImage = (id, profileImage) => async (dispatch) => {
+  try {
+    const { data } = await api.postImage(id, profileImage);
+    console.log(data);
+    dispatch({ type: "UPDATE_PROFILE_PICTURE", payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};
