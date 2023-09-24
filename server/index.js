@@ -10,6 +10,12 @@ dotenv.config();
 const app = express();
 app.use(express.json({ limit: "30mb", extended: true })); //.json() called as middleware, recognize incoming REQUEST object as JSON object
 app.use(express.urlencoded({ limit: "30mb", extended: true })); //.urlencoded():called as middleware, recognize incoming REQUEST object as string/array object
+// Enable CORS for a specific origin (in this case, allowing requests from 'https://stack-over-flow-clone-8z10.onrender.com')
+// const corsOptions = {
+//   origin: "http://localhost:3000",
+//   credentials: true, //access-control-allow-credentials:true
+//   optionSuccessStatus: 200,
+// };
 app.use(cors()); //cross origin resource sharing
 
 app.get("/", (req, res) => {

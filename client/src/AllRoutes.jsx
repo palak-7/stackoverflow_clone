@@ -57,7 +57,7 @@ function AllRoutes({ slideIn, handleSlideIn }) {
           element={<Users slideIn={slideIn} handleSlideIn={handleSlideIn} />}
         />
         <Route
-          path="/users/:id"
+          path="/user/:id"
           element={
             <Userprofile slideIn={slideIn} handleSlideIn={handleSlideIn} />
           }

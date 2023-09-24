@@ -41,4 +41,4 @@ export const updateProfile = (id, updateData) =>
   API.patch(`/user/update/${id}`, updateData);
 
 export const postImage = (id, profileImage) =>
-  API.patch(`/postImage/${id}`, { profileImage });
+  API.patch(`/user/postImage/${id}`, profileImage);

@@ -12,6 +12,7 @@ export const getAllUsers = async (req, res) => {
         about: users.about,
         tags: users.tags,
         joinedOn: users.joinedOn,
+        profileImage: users.profileImage,
       });
     });
     res.status(200).json(allUserDetails);
@@ -40,30 +41,20 @@ export const updateProfile = async (req, res) => {
   }
 };
 
-export const getImage = async (req, res) => {
-  try {
-    const image = await User.find();
-    console.log(image);
-    res.status(200).json(image);
-  } catch (error) {
-    res.status(409).json({ message: error.message });
-  }
-};
-
 export const postImage = async (req, res) => {
   const { id: _id } = req.params;
-  console.log("id: " + _id);
   const { profileImage } = req.body;
-  console.log("profileImage: " + profileImage);
   if (!mongoose.Types.ObjectId.isValid(_id)) {
     return res.status(404).send("User unavailable...");
   }
   try {
-    await User.findByIdAndUpdate(_id, {
-      $set: { profileImage: profileImage },
-    });
-    res.status(200).json(profileImage);
+    const postedImage = await User.findByIdAndUpdate(
+      _id,
+      { $set: { profileImage: profileImage } },
+      { new: true }
+    );
+    res.status(200).json(postedImage);
   } catch (error) {
-    console.log(error);
+    res.status(405).json({ message: error.message });
   }
 };

@@ -13,30 +13,31 @@ import "./UserProfile.css";
 import { postImage } from "../../actions/users";
 
 const Userprofile = ({ slideIn, handleSlideIn }) => {
-  const [profileImage, setProfileImage] = useState("");
-  const [displaySubmitBtn, setDisplaySubmitBtn] = useState(false);
-
   const dispatch = useDispatch();
   const { id } = useParams();
+
+  const currentUser = useSelector((state) => state.currentUserReducer);
   const users = useSelector((state) => state.usersReducer);
   const currentProfile = users.filter((user) => user._id === id)[0];
-  const currentUser = useSelector((state) => state.currentUserReducer);
-  // const profilePicture = useSelector((state) => state.imageReducer);
-
+  const [displaySubmitBtn, setDisplaySubmitBtn] = useState(false);
   const [Switch, setSwitch] = useState(false);
+  const [profileImage, setProfileImage] = useState(
+    currentProfile?.profileImage
+  );
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
     setProfileImage(base64);
-    console.log("file: " + profileImage);
     setDisplaySubmitBtn(true);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postImage(id, profileImage));
+    dispatch(postImage(id, { profileImage }));
     console.log("Uploaded");
+    setDisplaySubmitBtn(false);
+    window.location.reload();
   };
 
   return (
@@ -48,11 +49,15 @@ const Userprofile = ({ slideIn, handleSlideIn }) => {
             <div className="user-details">
               <form onSubmit={handleSubmit}>
                 <label htmlFor="file-upload" style={{ cursor: "pointer" }}>
-                  {profileImage ? (
+                  {currentProfile?.profileImage ? (
                     <img
-                      style={{ width: "108px", height: "127px" }}
-                      src={profileImage}
-                      alt="profile Image"
+                      style={{
+                        width: "108px",
+                        height: "127px",
+                        display: displaySubmitBtn && "none",
+                      }}
+                      src={currentProfile.profileImage}
+                      alt="profile"
                     ></img>
                   ) : (
                     <>

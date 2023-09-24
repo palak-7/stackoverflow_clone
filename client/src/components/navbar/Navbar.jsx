@@ -11,13 +11,16 @@ import bars from "../../assets/bars-solid.svg";
 import darkBars from "../../assets/bars-solid-dark.svg";
 import "./Navbar.css";
 import { setCurrentUser } from "../../actions/currentUser";
+
 function Navbar({ handleSlideIn }) {
   var user = useSelector((state) => state.currentUserReducer);
+  const users = useSelector((state) => state.usersReducer);
+  const currentProfile = users.filter(
+    (myUser) => myUser._id === user?.result?._id
+  )[0];
   const theme = useSelector((state) => state.themeReducer);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   useEffect(() => {
     const token = user?.token;
     if (token) {
@@ -92,6 +95,27 @@ function Navbar({ handleSlideIn }) {
             <Link to="/auth" className="nav-item log-btn">
               Log-In
             </Link>
+          ) : currentProfile?.profileImage ? (
+            <>
+              <Link to={`/user/${user?.result?._id}`}>
+                <img
+                  style={{
+                    width: "35px",
+                    height: "35px",
+                    borderRadius: "50%",
+                    marginLeft: "10px",
+                  }}
+                  src={currentProfile.profileImage}
+                  alt="profile"
+                ></img>
+              </Link>
+              <button
+                className="nav-item nav-links log-btn"
+                onClick={handleLogout}
+              >
+                Log-Out
+              </button>
+            </>
           ) : (
             <>
               <Avatar
@@ -102,7 +126,7 @@ function Navbar({ handleSlideIn }) {
                 color="white"
               >
                 <Link
-                  to={`/users/${user?.result?._id}`}
+                  to={`/user/${user?.result?._id}`}
                   style={{ color: "white", textDecoration: "none" }}
                 >
                   {user.result.name.charAt(0).toUpperCase()}

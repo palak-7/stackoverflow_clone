@@ -11,6 +11,8 @@ import { changeTheme } from "./actions/changeTheme";
 function App() {
   const dispatch = useDispatch();
 
+  // dispatch(getImage(user.result._id));
+
   //getting time to change theme accordingly
   const today = new Date();
   const time = today.getHours();
