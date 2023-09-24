@@ -73,15 +73,17 @@ const Userprofile = ({ slideIn, handleSlideIn }) => {
                     </>
                   )}
                 </label>
-                <input
-                  type="file"
-                  label="Image"
-                  name="myFile"
-                  id="file-upload"
-                  accept=".jpeg, .png .jpg"
-                  style={{ display: "none" }}
-                  onChange={(e) => handleFileUpload(e)}
-                />
+                {currentUser?.result._id === id && (
+                  <input
+                    type="file"
+                    label="Image"
+                    name="myFile"
+                    id="file-upload"
+                    accept=".jpeg, .png .jpg"
+                    style={{ display: "none" }}
+                    onChange={(e) => handleFileUpload(e)}
+                  />
+                )}
                 <button
                   style={{ display: !displaySubmitBtn ? "none" : "block" }}
                   className="edit-profile-btn"
