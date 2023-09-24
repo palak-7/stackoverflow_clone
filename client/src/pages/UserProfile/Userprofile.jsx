@@ -37,7 +37,7 @@ const Userprofile = ({ slideIn, handleSlideIn }) => {
     dispatch(postImage(id, { profileImage }));
     console.log("Uploaded");
     setDisplaySubmitBtn(false);
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (
