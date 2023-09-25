@@ -11,6 +11,7 @@ import bars from "../../assets/bars-solid.svg";
 import darkBars from "../../assets/bars-solid-dark.svg";
 import "./Navbar.css";
 import { setCurrentUser } from "../../actions/currentUser";
+import { changeTheme } from "../../actions/changeTheme";
 
 function Navbar({ handleSlideIn }) {
   var user = useSelector((state) => state.currentUserReducer);
@@ -37,6 +38,11 @@ function Navbar({ handleSlideIn }) {
     dispatch({ type: "LOGOUT" });
     navigate("/");
     dispatch(setCurrentUser(null));
+  };
+
+  const reverseTheme = () => {
+    if (theme) dispatch(changeTheme(false));
+    else dispatch(changeTheme(true));
   };
   return (
     <nav
@@ -78,12 +84,21 @@ function Navbar({ handleSlideIn }) {
           </Link>
           <Link
             to="/customvideo"
-            className="nav-item nav-btn-up res-nav"
+            className="nav-item nav-btn-up video"
             style={{
               color: theme ? "#2d2c2c" : "#e7e9e5",
             }}
           >
             Video
+          </Link>
+          <Link
+            className="nav-item nav-btn-up video"
+            onClick={reverseTheme}
+            style={{
+              color: theme ? "#2d2c2c" : "#e7e9e5",
+            }}
+          >
+            {theme ? "Dark" : "Light"}
           </Link>
           <form>
             <input type="text" placeholder="Search..." />
